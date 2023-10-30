@@ -11,12 +11,13 @@ export const get = query({
 export const add = mutation({
   args: { 
     name: v.string(),
+    local: v.string(),
     country: v.string(),
     type: v.string(),
     alternate: v.optional(v.id("products")),
   },
-  handler: async (ctx, { name, country, type, alternate }) => {
+  handler: async (ctx, { name, country, local, type, alternate }) => {
     // Send a new message.
-    await ctx.db.insert("products", { name, country, type, alternate });
+    await ctx.db.insert("products", { name, country, local, type, alternate });
   },
 });
